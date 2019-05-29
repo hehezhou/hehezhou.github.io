@@ -5,7 +5,7 @@
     <url>%2F2019%2F05%2F29%2Ftest%2F</url>
     <content type="text"><![CDATA[12345678#include &lt;bits/stdc++.h&gt;using namespace std;int main() &#123; int a, b; cin &gt;&gt; a &gt;&gt; b; cout &lt;&lt; a + b &lt;&lt; endl; return 0;&#125;]]></content>
       <categories>
-        <category>杂项</category>
+        <category>题解</category>
       </categories>
   </entry>
   <entry>
