@@ -1,3 +1,11 @@
+.post-body a:not(.btn) {
+  color: #0593d3;
+  border-bottom: none;
+}
+.post-body a:not(.btn):hover {
+  color: #0477ab;
+  text-decoration: underline;
+}
 /* normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif; /* 1 */
@@ -321,7 +329,7 @@ span.exturl {
   color: #555;
   text-decoration: none;
   outline: none;
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #ccc;
   cursor: pointer;
 }
 a:hover,
@@ -1875,7 +1883,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff8814;
+  background: #75f983;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3012,12 +3020,67 @@ ul.breadcrumb li+li:last-child {
     text-align: justify;
   }
 }
-body {
-  background-image: url("/images/background2.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+.headband {
+  height: 4px;
+  background: #87daff;
 }
-.main-inner {
-  opacity: 0.9;
+.site-meta {
+  padding: 20px 0;
+  color: #fff;
+  background: #87daff;
+}
+.site-subtitle {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #fff;
+}
+.post-body p a {
+  color: #87daff;
+  border-bottom: none;
+  border-bottom: 1px solid #87daff;
+}
+.post-body p a:hover {
+  color: #87daff;
+  border-bottom: none;
+  border-bottom: 1px solid #87daff;
+}
+::selection {
+  background: #00f;
+  color: #f7f7f7;
+}
+::-moz-selection {
+  background: #00f;
+  color: #f7f7f7;
+}
+.btn {
+  color: #87daff;
+  background: #fff;
+  border: 2px solid #87daff;
+}
+.btn:hover {
+  border-color: #87daff;
+  color: #fff;
+  background: #87daff;
+}
+.posts-expand .post-title-link::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #555;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  -o-transform: scaleX(0);
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  -o-transform: scaleX(0);
+  transform: scaleX(0);
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
 }
