@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[题解 P1001 A+B Problem]]></title>
+    <url>%2F2019%2F05%2F29%2Ftest%2F</url>
+    <content type="text"><![CDATA[12345678#include &lt;bits/stdc++.h&gt;using namespace std;int main() &#123; int a, b; cin &gt;&gt; a &gt;&gt; b; cout &lt;&lt; a + b &lt;&lt; endl; return 0;&#125;]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[第一篇博客]]></title>
     <url>%2F2019%2F05%2F28%2Fmy-first-blog%2F</url>
     <content type="text"><![CDATA[$5.28$ 清华一本签暨搭建博客完成祭]]></content>
