@@ -3,3 +3,4 @@ Disallow: deleted
 Disallow: images
 Disallow: js
 Disallow: lib
+Disallow: page
