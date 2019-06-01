@@ -1,0 +1,5 @@
+Disallow: css
+Disallow: deleted
+Disallow: images
+Disallow: js
+Disallow: lib
