@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[题解 P3935 Calculating]]></title>
+    <url>%2F2019%2F06%2F02%2Fsolve-P3935%2F</url>
+    <content type="text"><![CDATA[题面首先题目给的柿子实际上就是$n$的因子个数$[l,r]$运用前缀和拆成$[1,r]-[1,l-1]$$$\sum_{i=1}^n\sum_{d|i}1$$$$= \sum_{d=1}^n\sum_{d|i,i&lt;=n}1$$$$= \sum_{d=1}^n\lfloor\frac nd\rfloor$$数论分块123456789101112131415161718// luogu-judger-enable-o2#include &lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const ll mod = 998244353;inline int work(ll x) &#123; int ans = 0; for(ll l = 1, r; l &lt;= x; l = r + 1) &#123; r = x / (x / l); ans = (ans + 1ll * (r - l + 1) * (x / l)) % mod; &#125; return ans;&#125;int main() &#123; ll l, r; scanf("%lld%lld", &amp;l, &amp;r); return printf("%lld\n", (work(r) - work(l - 1) + mod) % mod), 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[题解 P5227 [AHOI2013]连通图]]></title>
     <url>%2F2019%2F06%2F01%2Fsolve-P5227%2F</url>
     <content type="text"><![CDATA[题面 算法1:线段树分治对于区间[l,r] 把不涉及的边直接联通,然后对[l,mid],[mid+1,r]进行分治这个过程可以用带撤销并查集做$O(\sum clog\sum clogn)$(并查集复杂度貌似路径优化无法分析???)123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475#include &lt;bits/stdc++.h&gt;using namespace std;struct did &#123; int *p, x; inline int&amp; add(int &amp;d, int k) &#123; x = d; d = k; p = &amp;d; return d; &#125; inline void ret() &#123; *p = x; &#125;&#125; st[20000000];int top;inline int&amp; add(int &amp;x, int k) &#123; return st[top++].add(x, k);&#125;inline void ret(int lasttop) &#123; while(top &gt; lasttop) st[--top].ret();&#125;int fa[100010];int u[200010], v[200010], n, m, k;struct query &#123; int e[4], len;&#125; q[100010];int used[200010];int nowans;inline int gf(int a) &#123;return fa[a] &lt; 0 ? a : add(fa[a], gf(fa[a]));&#125;inline void merge(int a, int b) &#123; a = gf(a), b = gf(b); if(a == b) return; add(nowans, nowans - 1); if(fa[a] &lt; fa[b]) swap(a, b); add(fa[b], fa[a] + fa[b]); add(fa[a], b);&#125;inline void solve(int l, int r, vector&lt;int&gt; &amp;vc) &#123; for(int i : vc) &#123; used[i] = 0; &#125; for(int i = l; i &lt;= r; i++) for(int j = 0; j &lt; q[i].len; j++) used[q[i].e[j]] = 1; vector&lt;int&gt; use; int lasttop = top; for(int i : vc) &#123; if(used[i]) use.push_back(i); else merge(u[i], v[i]); &#125; if(l == r) &#123; if(nowans == 1) puts("Connected"); else puts("Disconnected"); &#125; else &#123; int mid = l + r &gt;&gt; 1; solve(l, mid, use); solve(mid + 1, r, use); &#125; ret(lasttop);&#125;int main() &#123; scanf("%d%d", &amp;n, &amp;m); memset(fa, -1, sizeof fa); for(int i = 1; i &lt;= m; i++) scanf("%d%d", u + i, v + i); scanf("%d", &amp;k); for(int i = 1; i &lt;= k; i++) &#123; scanf("%d", &amp;q[i].len); for(int j = 0; j &lt; q[i].len; j++) scanf("%d", q[i].e + j); &#125; vector&lt;int&gt; v; nowans = n; for(int i = 1; i &lt;= m; i++) v.push_back(i); solve(1, k, v); return 0;&#125; 算法2:找一棵生成树非树边随机权值树边权值为覆盖的非树边的权值异或和每次询问:边的权值的集合为$S$,若存在$S$的子集异或和为0,则不连通(感性理解一下)显然线性基维护即可$O(n+m+logv\sum c)$]]></content>
