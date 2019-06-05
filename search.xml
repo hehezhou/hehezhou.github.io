@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[题解 P1558 色板游戏]]></title>
+    <url>%2F2019%2F06%2F05%2Fsolve-P1558%2F</url>
+    <content type="text"><![CDATA[题面注意到$T\leq 30$所以可以把存在的颜色集合压成一个int于是可以区间赋值线段树做123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566#include &lt;bits/stdc++.h&gt;using namespace std;int tag[400010], sum[400010];inline void up(int x) &#123; sum[x] = sum[x &lt;&lt; 1] | sum[x &lt;&lt; 1 | 1];&#125;inline void down(int x) &#123; if(tag[x]) &#123; sum[x &lt;&lt; 1] = sum[x &lt;&lt; 1 | 1] = sum[x]; tag[x &lt;&lt; 1] = tag[x &lt;&lt; 1 | 1] = 1; tag[x] = 0; &#125;&#125;inline void add(int x, int l, int r, int L, int R, int k) &#123; if(l &gt; R || L &gt; r) return; if(L &lt;= l &amp;&amp; r &lt;= R) &#123; tag[x] = 1; sum[x] = 1 &lt;&lt; (k - 1); return; &#125; int mid = l + r &gt;&gt; 1; down(x); add(x &lt;&lt; 1, l, mid, L, R, k); add(x &lt;&lt; 1 | 1, mid + 1, r, L, R, k); up(x);&#125;inline int get(int x, int l, int r, int L, int R) &#123; if(l &gt; R || L &gt; r) return 0; if(L &lt;= l &amp;&amp; r &lt;= R) return sum[x]; int mid = l + r &gt;&gt; 1; down(x); return get(x &lt;&lt; 1, l, mid, L, R) | get(x &lt;&lt; 1 | 1, mid + 1, r, L, R);&#125;int n, m;inline void build(int x, int l, int r) &#123; if(l == r) &#123; sum[x] = 1; return; &#125; int mid = l + r &gt;&gt; 1; build(x &lt;&lt; 1, l, mid); build(x &lt;&lt; 1 | 1, mid + 1, r); up(x);&#125;int sze[256];int main() &#123; for(int i = 1; i &lt; 256; i++) sze[i] = sze[i &gt;&gt; 1] + (i &amp; 1); scanf("%d%*d%d", &amp;n, &amp;m); build(1, 1, n); for(int i = 1; i &lt;= m; i++) &#123; int l, r, c; char opt; scanf("%s%d%d", &amp;opt, &amp;l, &amp;r); if(l &gt; r) swap(l, r); if(opt == 'P') &#123; int cnt = 0, ans = get(1, 1, n, l, r); while(ans) cnt += sze[ans &amp; 255], ans &gt;&gt;= 8; printf("%d\n", cnt); &#125; else &#123; scanf("%d", &amp;c); add(1, 1, n, l, r, c); &#125; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>线段树</tag>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[题解 P5389 [Cnoi2019]数学课]]></title>
+    <url>%2F2019%2F06%2F05%2Fsolve-P5389%2F</url>
+    <content type="text"><![CDATA[题面根据$\sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6}$可以把题目所求化为$\frac 12(1-\frac{3}{n(n+2)})$1234567891011121314#include &lt;bits/stdc++.h&gt;using namespace std;const int mod = 998244353;int main() &#123; long long n; scanf("%lld", &amp;n); n %= mod; if(n == 0) return cout &lt;&lt; (mod + 1) / 2 &lt;&lt; endl, 0; long long res = 2 * n % mod * (n + 2) % mod, ans = 1; for(int b = mod - 2; b; b &gt;&gt;= 1, res = res * res % mod) if(b &amp; 1) ans = ans * res % mod; ans = ans * 3 % mod; ans = ((mod + 1) / 2 - ans + mod) % mod; return cout &lt;&lt; ans &lt;&lt; endl, 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[题解 P5382 [THUPC2019]改善生活]]></title>
     <url>%2F2019%2F06%2F05%2Fsolve-P5382%2F</url>
     <content type="text"><![CDATA[题面 首先让我们证明一个结论：存在一个最优解小Z只引出了一个话题感性理解：我多选了一个相当与把两个答案进行某种意义下的平均，不会变的更优 证明：若$S_1$表示小Z引出话题的集合，我们只要证明向$S_1$中插入集合$S_2$不会变的更优($S1\cap S_2=\emptyset$)(新方案要么不优于只选$S_1$的方案，要么不优于只选$S_2$的方案) 设当只选$S_1$时,答案为$ans_1$,$sum(k)=a_k$,当只选$S_2$时,答案为$ans_2$,$sum(k)=b_k$(令$ans_1\leq ans_2$)当选$S_1\cup S_2$时,答案为$ans_3$,$sum(k)=c_k$ 显然$c_1=a_1+b_1$$\forall k\in [2,n]\ a_k\leq a_1ans_1$$\forall k\in [2,n]\ b_k\leq b_1ans_2$$\forall k\in [2,n]\ c_k\leq a_k+b_k$(话题可能有交集)$\leq a_1ans_1+b_1ans_2$$$ans_3=\frac{max_{k\in [2,n]}{c_k}}{c_1}$$$$\leq max_{k\in [2,n]}{\frac{a_1ans_1+b_1ans_2}{a_1+b_1}}$$$$\leq max_{k\in [2,n]}{\frac{a_1ans_2+b_1ans_2}{a_1+b_1}}$$$$=ans_2$$证毕 所以只要枚举选的点，然后算答案即可(我的代码实现求了个传递闭包) Talk is cheap, show me the code.码风丑，请大佬轻喷 1234567891011121314151617181920212223242526#include &lt;bits/stdc++.h&gt;using namespace std;int mp[710][710], n, m, c[710], w[710];int cnt[710], ans;int main() &#123; scanf("%d%d", &amp;n, &amp;m); for(int i = 1; i &lt;= n; i++) scanf("%d", c + i); for(int i = 1; i &lt;= n; i++) scanf("%d", w + i); for(int i = 1, u, v; i &lt;= m; i++) &#123; scanf("%d%d", &amp;u, &amp;v); mp[u][v] = 1; &#125; for(int k = 1; k &lt;= n; k++) for(int i = 1; i &lt;= n; i++) for(int j = 1; j &lt;= n; j++) mp[i][j] |= mp[i][k] &amp; mp[k][j]; //没有错，n ^ 3 就是能过700 (700 ^ 3 = 3e8) for(int i = 1; i &lt;= n; i++) &#123; if(c[i] == 1) &#123; memset(cnt, 0, sizeof cnt); for(int j = 1; j &lt;= n; j++) if(mp[i][j]) cnt[c[j]] += w[j]; for(int j = 2; j &lt;= n; j++) ans = max(ans, cnt[j] / w[i]); &#125; &#125; printf("%d\n", ans); return 0;&#125;]]></content>
@@ -53,8 +76,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>图论</tag>
         <tag>线段树</tag>
+        <tag>图论</tag>
         <tag>tarjan(强连通分量)</tag>
       </tags>
   </entry>
