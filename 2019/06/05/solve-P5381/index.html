@@ -96,20 +96,25 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="hehezhou的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2019/page/2/index.html">
+  <meta name="description" content="题面 题意给定${a_n}$,${b_n}$求$\sum_{i=1}^k|a_ix+b_i|$ 的最小值$(\forall k\in[1,n])$ 首先根据小学数学知识，我们把它转化为:$$\sum_{i=0}^k|a_i|*|x+\frac{b_i}{a_i}|$$ 考虑实际意义，一条数轴上有$m$个点，要求数轴上一点，使该点到各点的距离和最小显然， 当这个点为第$\frac{m+1}2$个点时">
+<meta name="keywords" content="平衡树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="题解 P5381 [THUPC2019]不等式">
+<meta property="og:url" content="http://yoursite.com/2019/06/05/solve-P5381/index.html">
 <meta property="og:site_name" content="hehezhou的博客">
+<meta property="og:description" content="题面 题意给定${a_n}$,${b_n}$求$\sum_{i=1}^k|a_ix+b_i|$ 的最小值$(\forall k\in[1,n])$ 首先根据小学数学知识，我们把它转化为:$$\sum_{i=0}^k|a_i|*|x+\frac{b_i}{a_i}|$$ 考虑实际意义，一条数轴上有$m$个点，要求数轴上一点，使该点到各点的距离和最小显然， 当这个点为第$\frac{m+1}2$个点时">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-01T07:55:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hehezhou的博客">
+<meta name="twitter:title" content="题解 P5381 [THUPC2019]不等式">
+<meta name="twitter:description" content="题面 题意给定${a_n}$,${b_n}$求$\sum_{i=1}^k|a_ix+b_i|$ 的最小值$(\forall k\in[1,n])$ 首先根据小学数学知识，我们把它转化为:$$\sum_{i=0}^k|a_i|*|x+\frac{b_i}{a_i}|$$ 考虑实际意义，一条数轴上有$m$个点，要求数轴上一点，使该点到各点的距离和最小显然， 当这个点为第$\frac{m+1}2$个点时">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2019/page/2/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/05/solve-P5381/">
 
 
 
@@ -119,7 +124,7 @@
   };
 </script>
 
-  <title>归档 | hehezhou的博客</title>
+  <title>题解 P5381 [THUPC2019]不等式 | hehezhou的博客</title>
   
 
 
@@ -167,7 +172,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -256,7 +261,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -327,245 +332,225 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/05/solve-P5381/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHR">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hehezhou的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">题解 P5381 [THUPC2019]不等式
+
+              
+            
+          </h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-05 14:27:14" itemprop="dateCreated datePublished" datetime="2019-06-05T14:27:14+08:00">2019-06-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-01 15:55:06" itemprop="dateModified" datetime="2019-06-01T15:55:06+08:00">2019-06-01</time>
+              
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 15 篇日志。 继续努力。
-      </span>
-      
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/29/you-ji-THUSC2019/" itemprop="url">
+          
             
-              <span itemprop="name">THUSC2019游记</span>
-            
-          </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-29T15:44:05+08:00" content="2019-05-29">
-          05-29
-        </time>
-      </div>
+          
+          
 
-    </header>
-  </article>
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
 
+          
 
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/29/solve-P3385/" itemprop="url">
-            
-              <span itemprop="name">题解 P3385 [模板]负环</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-29T15:35:22+08:00" content="2019-05-29">
-          05-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/29/solve-P4115/" itemprop="url">
-            
-              <span itemprop="name">题解 P4115 Qtree4</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-29T14:13:16+08:00" content="2019-05-29">
-          05-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p><a href="https://www.luogu.org/problemnew/show/P5381" target="_blank" rel="noopener">题面</a></p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给定${a_n}$,${b_n}$<br>求$\sum_{i=1}^k|a_ix+b_i|$ 的最小值$(\forall k\in[1,n])$</p>
+<p>首先根据<del>小学</del>数学知识，我们把它转化为:<br>$$\sum_{i=0}^k|a_i|*|x+\frac{b_i}{a_i}|$$</p>
+<p>考虑实际意义，一条数轴上有$m$个点，要求数轴上一点，使该点到各点的距离和最小<br><del>显然，</del> 当这个点为第$\frac{m+1}2$个点时为一个最优解(即中位数)</p>
+<p>然后用平衡树维护中位数，并统计答案即可(当然你用两个堆也可以)</p>
+<p>注意总个数可能爆$int$</p>
+<h4 id="Talk-is-cheap-show-me-the-code"><a href="#Talk-is-cheap-show-me-the-code" class="headerlink" title="Talk is cheap, show me the code."></a>Talk is cheap, show me the code.</h4><p>码风很丑，大佬轻喷</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="comment">// 以下平衡树(无旋treap)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> rnd, cnt, ls, rs;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> size;</span><br><span class="line">    <span class="keyword">double</span> sum, key;</span><br><span class="line">&#125; t[<span class="number">500010</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">newnode</span><span class="params">(<span class="keyword">double</span> key, <span class="keyword">int</span> cnt)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> Cnt = <span class="number">0</span>;</span><br><span class="line">    t[++Cnt] = node&#123;rand(), cnt, <span class="number">0</span>, <span class="number">0</span>, (<span class="keyword">long</span> <span class="keyword">long</span>)cnt, key * cnt, key&#125;;</span><br><span class="line">    <span class="keyword">return</span> Cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">up</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    t[x].size = t[t[x].ls].size + t[t[x].rs].size + t[x].cnt;</span><br><span class="line">    t[x].sum = t[t[x].ls].sum + t[t[x].rs].sum + t[x].key * t[x].cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a == <span class="number">0</span> || b == <span class="number">0</span>) <span class="keyword">return</span> a | b;</span><br><span class="line">    <span class="keyword">if</span>(t[a].rnd &lt; t[b].rnd) <span class="keyword">return</span> t[a].rs = merge(t[a].rs, b), up(a), a;</span><br><span class="line">    <span class="keyword">return</span> t[b].ls = merge(a, t[b].ls), up(b), b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">split_key</span><span class="params">(<span class="keyword">int</span> now, <span class="keyword">double</span> k, <span class="keyword">int</span> &amp;x, <span class="keyword">int</span> &amp;y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(now == <span class="number">0</span>) x = y = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(t[now].key &gt; k) y = now, split_key(t[now].ls, k, x, t[y].ls), up(y);</span><br><span class="line">    <span class="keyword">else</span> x = now, split_key(t[now].rs, k, t[x].rs, y), up(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">split_rank</span><span class="params">(<span class="keyword">int</span> now, <span class="keyword">long</span> <span class="keyword">long</span> k, <span class="keyword">int</span> &amp;x, <span class="keyword">int</span> &amp;y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(now == <span class="number">0</span>) x = y = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(t[t[now].ls].size &gt;= k) y = now, split_rank(t[now].ls, k, x, t[y].ls), up(y);</span><br><span class="line">    <span class="keyword">else</span> x = now, split_rank(t[now].rs, k - t[t[now].ls].size - t[now].cnt, t[x].rs, y), up(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">get_max</span><span class="params">(<span class="keyword">int</span> now)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(t[now].rs) <span class="keyword">return</span> get_max(t[now].rs);</span><br><span class="line">    <span class="keyword">return</span> t[now].key;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//平衡树结束</span></span><br><span class="line"><span class="keyword">int</span> n, a[<span class="number">500010</span>], b[<span class="number">500010</span>], rt;</span><br><span class="line"><span class="keyword">double</span> lala;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, a + i);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, b + i);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i] &lt; <span class="number">0</span>) a[i] = -a[i], b[i] = -b[i]; <span class="comment">//加绝对值</span></span><br><span class="line">        <span class="keyword">int</span> x, y;</span><br><span class="line">        <span class="keyword">if</span>(a[i] == <span class="number">0</span>) lala += <span class="built_in">abs</span>(b[i]); <span class="comment">//特判</span></span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">double</span> add = <span class="number">-1.0</span> * b[i] / a[i];</span><br><span class="line">            split_key(rt, add, x, y);</span><br><span class="line">            rt = merge(merge(x, newnode(add, a[i])), y);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">double</span> mid;</span><br><span class="line">        split_rank(rt, (t[rt].size + <span class="number">1</span>) / <span class="number">2</span>, x, y);</span><br><span class="line">        mid = get_max(x);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%.10lf\n"</span>, lala + mid * t[x].size - t[x].sum + t[y].sum - mid * t[y].size);</span><br><span class="line">        rt = merge(x, y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//完结撒花</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/29/solve-P1001/" itemprop="url">
-            
-              <span itemprop="name">题解 P1001 A+B Problem</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-29T13:23:53+08:00" content="2019-05-29">
-          05-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/28/my-first-blog/" itemprop="url">
-            
-              <span itemprop="name">第一篇博客</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-28T15:42:16+08:00" content="2019-05-28">
-          05-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/平衡树/" rel="tag"># 平衡树</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/05/solve-CF600E/" rel="next" title="题解 CF600E Lomsat gelral">
+                <i class="fa fa-chevron-left"></i> 题解 CF600E Lomsat gelral
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/05/solve-P5382/" rel="prev" title="题解 P5382 [THUPC2019]改善生活">
+                题解 P5382 [THUPC2019]改善生活 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2019/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/2019/">1</a><span class="page-number current">2</span>
-  </nav>
+  </article>
 
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -862,6 +847,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
 
   
 
@@ -1282,7 +1271,7 @@
   <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
   <script>
   
-    bookmark.loadBookmark();
+    bookmark.scrollToMark('auto', "#更多");
   
   </script>
 
