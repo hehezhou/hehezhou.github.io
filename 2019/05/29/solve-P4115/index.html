@@ -16,7 +16,7 @@
 
 <html class="theme-next pisces use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -164,7 +164,7 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -175,7 +175,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -496,10 +496,10 @@
 <p>对于每一个点$x$维护一个堆，记录$x$的每个轻子树内任意黑点到$x$的距离的最大值，  </p>
 <p>线段树维护答案<br>对于$dfn$区间$[l,r]$,记录三个值:<br>1.$lmax$:所有$dfn$为$[l,r]$点的轻子树和内的所有黑点到$dfn$为$l$的点的距离最大值<br>2.$rmax$:同理，表示所有$dfn$为$[l,r]$点的轻子树和内的所有黑点到$dfn$为$l$的点的距离最大值<br>3.$ans$:表示所有$dfn[lca]\in [l,r]$ 的黑点的距离最大值</p>
 <p>区间合并:线段树上$x$的左儿子为$ls$，右儿子为$rs$</p>
-<p>$$ans_x=max{ans_{ls},ans_{rs},rmax_{ls}+lmax_{rs}+dis(r_{ls},l_{rs})}$$<br>$$lmax_x=max{lmax_{ls},lmax_{rs}+dist(l_{ls},l_{rs})}$$<br>$$rmax_x=max{rmax_{rs},rmax_{ls}+dist(r_{ls},r_{rs})}$$</p>
-<p>边界:点$x$对应区间$[L,L]$ $D_1=$堆内的最大值，$D_2=$堆内的次大值(来自两个不同轻子树)(若没有为$-\infty$)</p>
-<p>若$x$为白点<br>$$lmax_x=rmax_x=max{0,D_1}$$<br>$$ans_x=max(0,D_1,D_1+D_2)$$<br>(自己到自己，自己到最远的，最远的到次远的)<br>否则<br>$$lmax_x=rmax_x=D_1$$<br>$$ans_x=D_1+D_2$$</p>
-<p>然后我们发现其实距离堆内维护的就是每个轻儿子线段树顶的$lmax+dist(x,son)$</p>
+<script type="math/tex; mode=display">ans_x=max\{ans_{ls},ans_{rs},rmax_{ls}+lmax_{rs}+dis(r_{ls},l_{rs})\}</script><script type="math/tex; mode=display">lmax_x=max\{lmax_{ls},lmax_{rs}+dist(l_{ls},l_{rs})\}</script><script type="math/tex; mode=display">rmax_x=max\{rmax_{rs},rmax_{ls}+dist(r_{ls},r_{rs})\}</script><p>边界:点$x$对应区间$[L,L]$ $D_1=$堆内的最大值，$D_2=$堆内的次大值(来自两个不同轻子树)(若没有为$-\infty$)</p>
+<p>若$x$为白点</p>
+<script type="math/tex; mode=display">lmax_x=rmax_x=max\{0,D_1\}</script><script type="math/tex; mode=display">ans_x=max(0,D_1,D_1+D_2)</script><p>(自己到自己，自己到最远的，最远的到次远的)<br>否则  </p>
+<script type="math/tex; mode=display">lmax_x=rmax_x=D_1</script><script type="math/tex; mode=display">ans_x=D_1+D_2</script><p>然后我们发现其实距离堆内维护的就是每个轻儿子线段树顶的$lmax+dist(x,son)$</p>
 <p>每条链的答案可以记在另一个堆里，询问时直接查即可</p>
 <h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析:"></a>复杂度分析:</h4><p>dist(i,j):发现总是在求祖先-后代距离，所以深度减一下$O(1)$<br>建树O(n)<br>每次修改$O(logn)$条链，每次线段树$O(logn)$,修改距离堆$O(logn)$，修改记答案的堆$O(logn)$总复杂度$O(nlog^2n)$<br>每次查询$O(1)$获取堆顶即可<br>总复杂度$O(qlog^2n+n)$</p>
 <p><del>愚蠢的$log^2$做法到此结束</del></p>
@@ -624,7 +624,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -702,7 +702,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1401,7 +1403,7 @@
         }, 300);
       }).append(e);
     })
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
   

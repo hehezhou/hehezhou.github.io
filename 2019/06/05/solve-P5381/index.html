@@ -16,7 +16,7 @@
 
 <html class="theme-next pisces use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="题面 题意给定${a_n}$,${b_n}$求$\sum_{i=1}^k|a_ix+b_i|$ 的最小值$(\forall k\in[1,n])$ 首先根据小学数学知识，我们把它转化为:$$\sum_{i=0}^k|a_i|*|x+\frac{b_i}{a_i}|$$ 考虑实际意义，一条数轴上有$m$个点，要求数轴上一点，使该点到各点的距离和最小显然， 当这个点为第$\frac{m+1}2$个点时">
+  <meta name="description" content="题面 题意给定$\{a_n\}$,$\{b_n\}$求$\sum_{i=1}^k|a_ix+b_i|$ 的最小值$(\forall k\in[1,n])$ 首先根据小学数学知识，我们把它转化为: \sum_{i=0}^k|a_i|*|x+\frac{b_i}{a_i}|考虑实际意义，一条数轴上有$m$个点，要求数轴上一点，使该点到各点的距离和最小显然， 当这个点为第$\frac{m+1}2$个点时">
 <meta name="keywords" content="平衡树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="题解 P5381 [THUPC2019]不等式">
 <meta property="og:url" content="http://yoursite.com/2019/06/05/solve-P5381/index.html">
 <meta property="og:site_name" content="hehezhou的博客">
-<meta property="og:description" content="题面 题意给定${a_n}$,${b_n}$求$\sum_{i=1}^k|a_ix+b_i|$ 的最小值$(\forall k\in[1,n])$ 首先根据小学数学知识，我们把它转化为:$$\sum_{i=0}^k|a_i|*|x+\frac{b_i}{a_i}|$$ 考虑实际意义，一条数轴上有$m$个点，要求数轴上一点，使该点到各点的距离和最小显然， 当这个点为第$\frac{m+1}2$个点时">
+<meta property="og:description" content="题面 题意给定$\{a_n\}$,$\{b_n\}$求$\sum_{i=1}^k|a_ix+b_i|$ 的最小值$(\forall k\in[1,n])$ 首先根据小学数学知识，我们把它转化为: \sum_{i=0}^k|a_i|*|x+\frac{b_i}{a_i}|考虑实际意义，一条数轴上有$m$个点，要求数轴上一点，使该点到各点的距离和最小显然， 当这个点为第$\frac{m+1}2$个点时">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-06-01T07:55:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="题解 P5381 [THUPC2019]不等式">
-<meta name="twitter:description" content="题面 题意给定${a_n}$,${b_n}$求$\sum_{i=1}^k|a_ix+b_i|$ 的最小值$(\forall k\in[1,n])$ 首先根据小学数学知识，我们把它转化为:$$\sum_{i=0}^k|a_i|*|x+\frac{b_i}{a_i}|$$ 考虑实际意义，一条数轴上有$m$个点，要求数轴上一点，使该点到各点的距离和最小显然， 当这个点为第$\frac{m+1}2$个点时">
+<meta name="twitter:description" content="题面 题意给定$\{a_n\}$,$\{b_n\}$求$\sum_{i=1}^k|a_ix+b_i|$ 的最小值$(\forall k\in[1,n])$ 首先根据小学数学知识，我们把它转化为: \sum_{i=0}^k|a_i|*|x+\frac{b_i}{a_i}|考虑实际意义，一条数轴上有$m$个点，要求数轴上一点，使该点到各点的距离和最小显然， 当这个点为第$\frac{m+1}2$个点时">
 
 
 
@@ -161,7 +161,7 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -172,7 +172,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -471,9 +471,9 @@
 
       
         <p><a href="https://www.luogu.org/problemnew/show/P5381" target="_blank" rel="noopener">题面</a></p>
-<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给定${a_n}$,${b_n}$<br>求$\sum_{i=1}^k|a_ix+b_i|$ 的最小值$(\forall k\in[1,n])$</p>
-<p>首先根据<del>小学</del>数学知识，我们把它转化为:<br>$$\sum_{i=0}^k|a_i|*|x+\frac{b_i}{a_i}|$$</p>
-<p>考虑实际意义，一条数轴上有$m$个点，要求数轴上一点，使该点到各点的距离和最小<br><del>显然，</del> 当这个点为第$\frac{m+1}2$个点时为一个最优解(即中位数)</p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给定$\{a_n\}$,$\{b_n\}$<br>求$\sum_{i=1}^k|a_ix+b_i|$ 的最小值$(\forall k\in[1,n])$</p>
+<p>首先根据<del>小学</del>数学知识，我们把它转化为:</p>
+<script type="math/tex; mode=display">\sum_{i=0}^k|a_i|*|x+\frac{b_i}{a_i}|</script><p>考虑实际意义，一条数轴上有$m$个点，要求数轴上一点，使该点到各点的距离和最小<br><del>显然，</del> 当这个点为第$\frac{m+1}2$个点时为一个最优解(即中位数)</p>
 <p>然后用平衡树维护中位数，并统计答案即可(当然你用两个堆也可以)</p>
 <p>注意总个数可能爆$int$</p>
 <h4 id="Talk-is-cheap-show-me-the-code"><a href="#Talk-is-cheap-show-me-the-code" class="headerlink" title="Talk is cheap, show me the code."></a>Talk is cheap, show me the code.</h4><p>码风很丑，大佬轻喷</p>
@@ -587,7 +587,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -665,7 +665,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1364,7 +1366,7 @@
         }, 300);
       }).append(e);
     })
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
   

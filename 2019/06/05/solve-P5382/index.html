@@ -16,7 +16,7 @@
 
 <html class="theme-next pisces use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -161,7 +161,7 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -172,7 +172,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -462,15 +462,11 @@
 <p>首先让我们证明一个结论：存在一个最优解小Z只引出了一个话题<br>感性理解：我多选了一个相当与把两个答案进行某种意义下的平均，不会变的更优</p>
 <p>证明：<br>若$S_1$表示小Z引出话题的集合，我们只要证明向$S_1$中插入集合$S_2$不会变的更优($S1\cap S_2=\emptyset$)(新方案要么不优于只选$S_1$的方案，要么不优于只选$S_2$的方案)</p>
 <p>设当只选$S_1$时,答案为$ans_1$,$sum(k)=a_k$,<br>当只选$S_2$时,答案为$ans_2$,$sum(k)=b_k$(令$ans_1\leq ans_2$)<br>当选$S_1\cup S_2$时,答案为$ans_3$,$sum(k)=c_k$</p>
-<p>显然$c_1=a_1+b_1$<br>任意$k\in [2,n]\ a_k\leq a_1*ans_1$</p>
-<p>任意$k\in [2,n]\ b_k\leq b_1*ans_2$</p>
+<p>显然$c_1=a_1+b_1$<br>任意$k\in [2,n] a_k\leq a_1*ans_1$</p>
+<p>任意$k\in [2,n] b_k\leq b_1*ans_2$</p>
 <p>任意$k \in [2,n] c_k \leq a_k+b_k\leq a_1\times ans_1+b_1\times ans_2$</p>
 <p>(话题可能有交集)</p>
-<p>$$ans_3=\frac{max_{k\in [2,n]}{c_k}}{c_1}$$</p>
-<p>$$\leq max_{k\in [2,n]}(\frac{a_1\times ans_1+b_1\times ans_2}{a_1+b_1})$$</p>
-<p>$$\leq max_{k\in [2,n]}(\frac{a_1\times ans_2+b_1\times ans_2}{a_1+b_1})$$</p>
-<p>$$=ans_2$$</p>
-<p>证毕</p>
+<script type="math/tex; mode=display">ans_3=\frac{max_{k\in [2,n]}\{c_k\}}{c_1}</script><script type="math/tex; mode=display">\leq max_{k\in [2,n]}(\frac{a_1\times ans_1+b_1\times ans_2}{a_1+b_1})</script><script type="math/tex; mode=display">\leq max_{k\in [2,n]}(\frac{a_1\times ans_2+b_1\times ans_2}{a_1+b_1})</script><script type="math/tex; mode=display">=ans_2</script><p>证毕</p>
 <p>所以只要枚举选的点，然后算答案即可(我的代码实现求了个传递闭包)</p>
 <h4 id="Talk-is-cheap-show-me-the-code"><a href="#Talk-is-cheap-show-me-the-code" class="headerlink" title="Talk is cheap, show me the code."></a>Talk is cheap, show me the code.</h4><p>码风丑，请大佬轻喷</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> mp[<span class="number">710</span>][<span class="number">710</span>], n, m, c[<span class="number">710</span>], w[<span class="number">710</span>];</span><br><span class="line"><span class="keyword">int</span> cnt[<span class="number">710</span>], ans;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, c + i);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, w + i);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>, u, v; i &lt;= m; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;u, &amp;v);</span><br><span class="line">        mp[u][v] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n; k++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) mp[i][j] |= mp[i][k] &amp; mp[k][j];</span><br><span class="line">    <span class="comment">//没有错，n ^ 3 就是能过700 (700 ^ 3 = 3e8)</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(c[i] == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="built_in">memset</span>(cnt, <span class="number">0</span>, <span class="keyword">sizeof</span> cnt);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) <span class="keyword">if</span>(mp[i][j]) cnt[c[j]] += w[j];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">2</span>; j &lt;= n; j++) ans = max(ans, cnt[j] / w[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -582,7 +578,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -660,7 +656,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1359,7 +1357,7 @@
         }, 300);
       }).append(e);
     })
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
   
