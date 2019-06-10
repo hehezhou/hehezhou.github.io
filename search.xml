@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[题解 P5343 [XR-1]分块]]></title>
     <url>%2F2019%2F06%2F10%2Fsolve-P5343%2F</url>
-    <content type="text"><![CDATA[题面首先搞出合法的块长然后考虑dp,那么 f_x = \sum_{i=1}^\infty f_{x-i}[i &#8194; is &#8194; allowed]边界$f_x=0(x]]></content>
+    <content type="text"><![CDATA[题面首先搞出合法的块长然后考虑dp,那么 f_x = \sum_{i=1}^\infty f_{x-i}[i\_is\_allowed]边界$f_x=0(x]]></content>
       <categories>
         <category>题解</category>
       </categories>
@@ -74,8 +74,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>线段树</tag>
         <tag>dp</tag>
+        <tag>线段树</tag>
         <tag>笛卡尔树</tag>
       </tags>
   </entry>
