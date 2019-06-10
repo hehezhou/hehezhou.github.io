@@ -60,7 +60,7 @@
   <entry>
     <title><![CDATA[node.js P1001 A+B Problem]]></title>
     <url>%2F2019%2F06%2F08%2Fnode-js-P1001%2F</url>
-    <content type="text"><![CDATA[题面基本输入输出123456789101112131415161718const readline = require(&quot;readline&quot;)const IO = readline.createInterface(&#123; input:process.stdin, output:process.stdout&#125;);IO.on(&quot;line&quot;, function(line) &#123; var list, a, b; list = line.split(&apos; &apos;); a = Number(list[0]); b = Number(list[1]); console.log(a + b); IO.close();&#125;);IO.on(&quot;close&quot;, function() &#123; process.exit(0);&#125;) 官方标程12345const fs = require(&apos;fs&apos;)const data = fs.readFileSync(&apos;/dev/stdin&apos;)const result = data.toString(&apos;ascii&apos;).trim().split(&apos; &apos;).map(x =&gt; parseInt(x)).reduce((a, b) =&gt; a + b, 0)console.log(result)process.exit()]]></content>
+    <content type="text"><![CDATA[题面基本输入输出123456789101112131415161718const readline = require("readline")const IO = readline.createInterface(&#123; input:process.stdin, output:process.stdout&#125;);IO.on("line", function(line) &#123; var list, a, b; list = line.split(' '); a = Number(list[0]); b = Number(list[1]); console.log(a + b); IO.close();&#125;);IO.on("close", function() &#123; process.exit(0);&#125;) 官方标程12345const fs = require('fs')const data = fs.readFileSync('/dev/stdin')const result = data.toString('ascii').trim().split(' ').map(x =&gt; parseInt(x)).reduce((a, b) =&gt; a + b, 0)console.log(result)process.exit()]]></content>
       <categories>
         <category>node.js</category>
       </categories>
@@ -163,8 +163,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>图论</tag>
         <tag>线段树</tag>
+        <tag>图论</tag>
         <tag>tarjan(强连通分量)</tag>
       </tags>
   </entry>
