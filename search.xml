@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[题解 P5343 [XR-1]分块]]></title>
+    <url>%2F2019%2F06%2F10%2Fsolve-P5343%2F</url>
+    <content type="text"><![CDATA[题面首先搞出合法的块长然后考虑dp,那么 f_x = \sum_{i=1}^\infty f_{x-i}[i &#8194; is &#8194; allowed]边界$f_x=0(x]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>矩阵乘法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[node.js P1039 侦探推理]]></title>
+    <url>%2F2019%2F06%2F10%2Fnode-js-P1039%2F</url>
+    <content type="text"><![CDATA[题面首先读入，我用了正则表达式判合法性然后枚举凶手和日期判断合法注意只说闲话的人可能说真，可能说假12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394const readline = require("readline")const IO = readline.createInterface(process.stdin, process.stdout);const day = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];var n, m, p, ok = 0;var nowline = 0, nameline;var words = [], name = [];IO.on("line", function(line) &#123; if(nameline) &#123; nameline -= 1; name.push(line); return; &#125; nowline += 1; if(nowline == 1) &#123; let list = line.split(" "); n = Number(list[0]); m = Number(list[1]); p = Number(list[2]); // console.log(n, m, p); nameline = n; return; &#125; list = line.split(":"); list[0] = list[0].trim(); list[1] = list[1].trim().replace(".", ""); if(words[list[0]] == undefined) words[list[0]] = []; if(list[1].match(/(Today is [A-Z]*)|([A-Z]* is (not )?guilty)|(I am (not )?guilty)/gi) != null) words[list[0]].push(list[1]); if(nowline == p + 1) main();&#125;);IO.on("close", function() &#123; process.exit();&#125;)var d, gu, err;function check(name) &#123; if(words[name] == undefined) return -1; let now = -1; for(sen of words[name]) &#123; let nowp; let list = sen.split(' '); // console.log(sen); // console.log(list); if(list[1] == "am") &#123; nowp = (name == gu); if(list[2] == "not") nowp = !nowp; &#125; else if(list[0] == "Today") &#123; nowp = (d == list[2]); &#125; else if(list[1] == "is") &#123; nowp = (list[0] == gu); if(list[2] == "not") nowp = !nowp; &#125; // console.log(nowp); if(now == -1) now = nowp; else if(now != nowp) &#123; err = 1; return; &#125; &#125; return now;&#125;function main() &#123; // console.log(words); let ans = "", _min, _max; for(gu of name) &#123; for(d of day) &#123; // console.log(gu, d); err = 0; _min = _max = 0; for(peo of name) &#123; var lala = check(peo); if(err == 1) break; if(lala == -1) _max ++; else if(lala == 0) _min++, _max++; &#125; // console.log(err, _min, _max); if((err == 0) &amp;&amp; (m &lt;= _max) &amp;&amp; (m &gt;= _min)) &#123; if(ans == "") &#123; ans = gu; break; &#125; else &#123; console.log("Cannot Determine"); IO.close(); return; &#125; &#125; &#125; &#125; if(ans == "") console.log("Impossible"); else console.log(ans); IO.close();&#125;]]></content>
+      <categories>
+        <category>node.js</category>
+      </categories>
+      <tags>
+        <tag>枚举</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[node.js P5195 [USACO05DEC]Knights of Ni 骑士]]></title>
     <url>%2F2019%2F06%2F10%2Fnode-js-P5195%2F</url>
     <content type="text"><![CDATA[题面node.js自带空间大常数首先我们有一个很自然的想法，就是先从起点走到一个灌木丛，再到一个骑士处第一步很好搞，直接队列bfs即可第二步好像虽然边权为1，但因为起始距离不同，还是要跑最短路，感觉过不了(加上js的大常数)于是考虑用一种奇技淫巧特殊的bfs来做考虑一下bfs为什么是对的其实本质上bfs的过程就是先从$dis = 0$的扩展，再扩展$dis = 1$， 再再扩展$dis = 2\cdots$每次扩展的就是当前距离最小的，所以正确性和dijkstra一样所以我们开$n*m$个list记下距离为i的点然后for一遍从小到大扩展即可js队列里记两个数MLE。。。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869const readline = require("readline");const IO = readline.createInterface(process.stdin, process.stdout);var n, m;var map = [];var nowline = 0, nowcnt = 0;IO.on("line", function(line) &#123; let list = line.trim().split(' ').map(x =&gt; Number(x)); if(nowline == 0) &#123; nowline = 1; m = list[0]; n = list[1]; return; &#125; if(nowcnt == 0) map.push([]); nowcnt += list.length; for(var i of list) map[nowline - 1].push(i); if(nowcnt == m) &#123; nowcnt = 0; nowline++; &#125; if(nowline == n + 1) main();&#125;);IO.on("close", function() &#123; process.exit();&#125;);var xy = [], dis = [];var f;var fx = [0, 0, -1, 1], fy = [1, -1, 0, 0];function bfs() &#123; for(let i = 0; i &lt; n * m; i++) &#123; for(let p of xy[i]) &#123; for(let j = 0; j &lt; 4; j++) &#123; let newx = Math.floor(p / m) + fx[j]; let newy = p % m + fy[j]; if(newx &gt;= 0 &amp;&amp; newx &lt; n &amp;&amp; newy &gt;= 0 &amp;&amp; newy &lt; m) &#123; if(f[map[newx][newy]] &amp;&amp; dis[newx][newy] == -1) dis[newx][newy] = i + 1, xy[i + 1].push(newx * m + newy); &#125; &#125; &#125; &#125;&#125;function main() &#123; for(var i = 0; i &lt; n * m; i++) &#123; xy.push([]); &#125; for(var i = 0; i &lt; n; i++) &#123; dis.push([]); for(var j = 0; j &lt; m; j++) dis[i].push(map[i][j] == 2 ? (xy[0].push(i * m + j), 0) : -1); &#125; f = [1, 0, 1, 0, 1]; bfs(); xy = []; for(var i = 0; i &lt; n * m; i++) &#123; xy.push([]); &#125; for(var i = 0; i &lt; n; i++) &#123; for(var j = 0; j &lt; m; j++) dis[i][j] = map[i][j] == 4 &amp;&amp; dis[i][j] != -1 ? (xy[dis[i][j]].push(i * m + j), dis[i][j]) : -1; &#125; f = [1, 0, 1, 1, 1]; bfs(); let ans = n * m; for(var i = 0; i &lt; n; i++) &#123; for(var j = 0; j &lt; m; j++) if(map[i][j] == 3 &amp;&amp; dis[i][j] != -1 &amp;&amp; dis[i][j] &lt; ans) ans = dis[i][j]; &#125; console.log(ans); IO.close();&#125; PS: 貌似可以直接处理骑士/起点到指定灌木丛的距离]]></content>
@@ -52,8 +74,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>线段树</tag>
+        <tag>dp</tag>
         <tag>笛卡尔树</tag>
       </tags>
   </entry>
