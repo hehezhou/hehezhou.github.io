@@ -17,7 +17,7 @@
     <url>%2F2019%2F06%2F12%2Fsolve-P1361%2F</url>
     <content type="text"><![CDATA[题面 注意一下以下的最小割指的是删掉一些边，使起点无法到达终点，最小化边权和所以建单向边 首先每个作物只能在两片田中选一个考虑2-SAT最小割作物，A，B田均化为点首先考虑没有奇怪的相互作用，并用最小割做显然每个点从A点连来一条边，向B点连去一条边 相互作用:肯定不能直接在点上连来连去分成都种在A，都种在B来考虑都种在A田:建个虚点，向集合里的每个点连一条inf边，就割不掉了考虑什么时候不用割:集合里所有点都从A可达于是在从A向虚点连一条边，费用为$c1_i$都种在B田同理于是dinic即可复杂度O(玄学)(逃)123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869#include &lt;bits/stdc++.h&gt;using namespace std;const int inf = 2000000000;struct edge &#123; int v, f, nxt;&#125; e[8000010];int head[4010], tot = 1, cnt;int cur[4010], dis[4010];int n, m, k;inline void addedge(int u, int v, int f) &#123; e[++tot] = edge&#123;v, f, head[u]&#125;; head[u] = tot; e[++tot] = edge&#123;u, 0, head[v]&#125;; head[v] = tot;&#125;int s, t;inline int bfs() &#123; memset(dis, 0, sizeof(dis)); dis[s] = 1; queue&lt;int&gt; q; q.push(s); memcpy(cur, head, sizeof(cur)); while(!q.empty()) &#123; int now = q.front(); q.pop(); for(int i = head[now]; i; i = e[i].nxt) if(e[i].f != 0 &amp;&amp; dis[e[i].v] == 0) &#123; dis[e[i].v] = dis[now] + 1, q.push(e[i].v); if(e[i].v == t) return 1; &#125; &#125; return 0;&#125;inline int dfs(int now, int limit) &#123; if(now == t) return limit; int ans = 0; for(int &amp;i = cur[now]; i; i = e[i].nxt) &#123; if(e[i].f == 0 || dis[e[i].v] != dis[now] + 1) continue; int lala = dfs(e[i].v, min(limit, e[i].f)); if(lala == 0) dis[e[i].v] = 0; else ans += lala, limit -= lala, e[i].f -= lala, e[i ^ 1].f += lala; if(limit == 0) return ans; &#125; return ans;&#125;inline int dinic() &#123; int ans = 0; while(bfs()) ans += dfs(s, inf); return ans;&#125;int sum;int main() &#123; scanf("%d", &amp;n); s = 0; t = cnt = n + 1; for(int i = 1, x; i &lt;= n; i++) scanf("%d", &amp;x), addedge(s, i, x), sum += x; for(int i = 1, x; i &lt;= n; i++) scanf("%d", &amp;x), addedge(i, t, x), sum += x; scanf("%d", &amp;m); for(int i = 1, x, c1, c2, r1, r2; i &lt;= m; i++) &#123; scanf("%d%d%d", &amp;k, &amp;c1, &amp;c2); r1 = ++cnt; r2 = ++cnt; sum += c1 + c2; addedge(s, r1, c1); addedge(r2, t, c2); while(k--) scanf("%d", &amp;x), addedge(r1, x, inf), addedge(x, r2, inf); &#125; return printf("%d\n", sum - dinic()), 0;&#125;]]></content>
       <categories>
-        <category>最小割</category>
+        <category>题解</category>
       </categories>
       <tags>
         <tag>最小割</tag>
@@ -66,8 +66,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>平衡树</tag>
         <tag>树链剖分</tag>
+        <tag>平衡树</tag>
       </tags>
   </entry>
   <entry>
