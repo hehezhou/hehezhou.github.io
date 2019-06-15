@@ -97,7 +97,7 @@
 
 
   <meta name="description" content="题面首先明确一点:我们只要求出区间乘积中每个质因数的指数即可一个不难想到的暴力1:对每个数分解质因数，然后莫队维护即可$O(n\sqrt{nk})$(k为单个数的最大不同质因子个数)一个不难想到的暴力2:对每个质因子搞一个前缀和，然后暴力查即可$O((n+m)\sum k)$组合一下设个阈值x对小于x的质数用前缀和对大于x的质数用莫队发现x为1000时，小于x的质数168个妥妥的记得逆元预处理12">
-<meta name="keywords" content="根号分治,莫队">
+<meta name="keywords" content="莫队,根号分治">
 <meta property="og:type" content="article">
 <meta property="og:title" content="题解 P5071 [Ynoi2015]此时此刻的光辉">
 <meta property="og:url" content="http://yoursite.com/2019/06/12/solve-P5071/index.html">
@@ -499,9 +499,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/根号分治/" rel="tag"><i class="fa fa-tag"></i> 根号分治</a>
-          
             <a href="/tags/莫队/" rel="tag"><i class="fa fa-tag"></i> 莫队</a>
+          
+            <a href="/tags/根号分治/" rel="tag"><i class="fa fa-tag"></i> 根号分治</a>
           
         </div>
       

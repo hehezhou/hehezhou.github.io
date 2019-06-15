@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[题解 P1485 火枪打怪]]></title>
     <url>%2F2019%2F06%2F15%2Fsolve-P1485%2F</url>
-    <content type="text"><![CDATA[题面打怪时，显然从右往左打最优答案显然具有单调性，考虑二分然后看一下怎么算溅射伤害设前面几枪打的位置构成序列{a_n}于是x处溅射伤害$=\sum_{i=1}^n p-(x-a_i)^2=\sum_{i=1}^n p-x^2+2a_ix-a_i^2=n(p-x^2)+2x*\sum a_i-\sum a_i^2$于是维护个数，和，平方和即可注意一下，超过最大距离要删除1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#include &lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;ll p, k, n;ll a[1000010], tot[1000010];struct data &#123; ll cnt, cnti, cnti2; inline void clear() &#123; cnt = cnti = cnti2 = 0; &#125; inline void add(ll i, ll k) &#123; cnt += k; cnti += k * i; cnti2 += k * i * i; &#125; inline ll get(ll i) &#123; return (p - i * i) * cnt + 2 * cnti * i - cnti2; &#125;&#125; d;inline ll check() &#123; ll maxdis = 0, sum = 0; d.clear(); for(; maxdis &lt;= n &amp;&amp; maxdis * maxdis &lt;= p; maxdis++); // printf("%lld %lld\n", p, maxdis); for(ll i = n; i &gt; 0; i--) &#123; if(i + maxdis &lt;= n) d.add(i + maxdis, -tot[i + maxdis]); ll rest = a[i] - d.get(i); if(rest &lt; 0) tot[i] = 0; else tot[i] = rest / p + 1; d.add(i, tot[i]); sum += tot[i]; &#125; // for(int i = 1; i &lt;= n; i++) printf("%lld ", tot[i]); // puts(""); return sum &lt;= k;&#125;int main() &#123; scanf("%lld%lld", &amp;n, &amp;k); for(ll i = 1; i &lt;= n; i++) scanf("%lld", a + i); ll ans, l = 1, r = 3e11; while(l &lt;= r) &#123; p = (l + r) &gt;&gt; 1; if(check()) ans = p, r = p - 1; else l = p + 1; &#125; return cout &lt;&lt; ans &lt;&lt; endl, 0;&#125;]]></content>
+    <content type="text"><![CDATA[题面打怪时，显然从右往左打最优答案显然具有单调性，考虑二分然后看一下怎么算溅射伤害设前面几枪打的位置构成序列{a_n}于是x处溅射伤害$=\sum_{i=1}^n p-(x-a_i)^2=\sum_{i=1}^n p-x^2+2\times a_i\times x-a_i^2=n\times (p-x^2)+2\times x\times \sum a_i-\sum a_i^2$于是维护个数，和，平方和即可注意一下，超过最大距离要删除1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#include &lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;ll p, k, n;ll a[1000010], tot[1000010];struct data &#123; ll cnt, cnti, cnti2; inline void clear() &#123; cnt = cnti = cnti2 = 0; &#125; inline void add(ll i, ll k) &#123; cnt += k; cnti += k * i; cnti2 += k * i * i; &#125; inline ll get(ll i) &#123; return (p - i * i) * cnt + 2 * cnti * i - cnti2; &#125;&#125; d;inline ll check() &#123; ll maxdis = 0, sum = 0; d.clear(); for(; maxdis &lt;= n &amp;&amp; maxdis * maxdis &lt;= p; maxdis++); // printf("%lld %lld\n", p, maxdis); for(ll i = n; i &gt; 0; i--) &#123; if(i + maxdis &lt;= n) d.add(i + maxdis, -tot[i + maxdis]); ll rest = a[i] - d.get(i); if(rest &lt; 0) tot[i] = 0; else tot[i] = rest / p + 1; d.add(i, tot[i]); sum += tot[i]; &#125; // for(int i = 1; i &lt;= n; i++) printf("%lld ", tot[i]); // puts(""); return sum &lt;= k;&#125;int main() &#123; scanf("%lld%lld", &amp;n, &amp;k); for(ll i = 1; i &lt;= n; i++) scanf("%lld", a + i); ll ans, l = 1, r = 3e11; while(l &lt;= r) &#123; p = (l + r) &gt;&gt; 1; if(check()) ans = p, r = p - 1; else l = p + 1; &#125; return cout &lt;&lt; ans &lt;&lt; endl, 0;&#125;]]></content>
       <categories>
         <category>题解</category>
       </categories>
@@ -53,8 +53,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>根号分治</tag>
         <tag>莫队</tag>
+        <tag>根号分治</tag>
       </tags>
   </entry>
   <entry>
@@ -99,8 +99,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>根号分治</tag>
         <tag>莫队</tag>
+        <tag>根号分治</tag>
       </tags>
   </entry>
   <entry>
