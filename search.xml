@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[题解 洛谷P1337 [JSOI2004]平衡点 / 吊打XXX]]></title>
+    <url>%2F2019%2F08%2F04%2Fsolve-P1337%2F</url>
+    <content type="text"><![CDATA[题面题意:在桌子上有$n$个洞,每个洞挂着重量不等的重物,求这些重物用绳子连接起来后绳结会平衡在那个点上SA模板题每次从当前解产生一个新的解如果更优显然直接接受否则以$e^{-\frac{\Delta}{T}}$的概率接受($T$为当前温度,$\Delta$为解的差)12345678910111213141516171819202122232425262728293031323334353637#include &lt;bits/stdc++.h&gt;using namespace std;int x[1010], y[1010], w[1010];int n;inline double sqr(double x) &#123;return x * x;&#125;inline double check(double X, double Y) &#123; double ans = 0; for(int i = 1; i &lt;= n; i++) ans += w[i] * sqrt(sqr(X - x[i]) + sqr(Y - y[i])); return ans;&#125;double ans, ansx, ansy;inline void SA() &#123; double T = 200, eps = 1e-15, t = 0.998; while(T &gt; eps) &#123; double newx = ansx + (2 * rand() - RAND_MAX) * T, newy = ansy + (2 * rand() - RAND_MAX) * T; double newans = check(newx, newy); // cerr &lt;&lt; newans &lt;&lt; ' ' &lt;&lt; ans &lt;&lt; endl; if(newans &lt; ans) ans = newans, ansx = newx, ansy = newy; else if(exp((ans - newans) / T) * RAND_MAX &gt; rand()) ansx = newx, ansy = newy; T *= t; &#125;&#125;int main() &#123; srand(time(0)); scanf("%d", &amp;n); for(int i = 1; i &lt;= n; i++) scanf("%d%d%d", x + i, y + i, w + i); for(int i = 1; i &lt;= n; i++) ansx += x[i], ansy += y[i]; ansx /= n; ansy /= n; ans = check(ansx, ansy); SA(); SA(); SA(); SA(); SA(); return printf("%.3lf %.3lf\n", ansx, ansy), 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>SA(模拟退火)</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[题解 P5367 [模板]康托展开]]></title>
     <url>%2F2019%2F06%2F20%2Fsolve-P5367%2F</url>
     <content type="text"><![CDATA[题面康托展开是求排列排名的对于从低到高的第$x$位(0~n-1)，贡献为 x!\sum_{i=0}^{x-1}[a_i]]></content>
