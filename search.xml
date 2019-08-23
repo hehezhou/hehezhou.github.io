@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[题解 洛谷P5435 [模板]快速GCD]]></title>
+    <url>%2F2019%2F08%2F23%2Fsolve-P5435%2F</url>
+    <content type="text"><![CDATA[题面 感谢@Duan2baka 指出一处错误这道题很多人可能会以为要求的东西是有性质然而确实有预处理$O($值域$)$预处理 $O(1)$查询的方法首先用线性筛预处理，可以把大多数的数分解成三个不大于$O(\sqrt n)$的数的乘积如果分解出来大于$O(\sqrt n)$的话，一定是一个质数具体方法:1.找出一个数$x$的最小质因子$p$,并得到$\frac xp$的分解2.把$p$乘到最小的数上即可 证明一下为什么是对的考虑归纳法只需证明把$p$乘上最小的数后得到的结果一定不大于$\sqrt n$$\frac np$分解中最小的一个数$a$一定不大于$\sqrt[3]\frac np$$a\times p\leq\sqrt[3] \frac np \times p$当$p &gt; \sqrt[4] n$时，显然分解出的三个数为它的三个质因子,成立否则$a\times p\leq\sqrt[3]\frac n{\sqrt[4] n}\times\sqrt[4]n=\sqrt n$证毕 于是乎，对于每次询问就可以把一个数分解然后第一次暴力取一下膜值域就变为了$O(\sqrt v)$于是就可以打一个$O(\sqrt v)\times O(\sqrt v)$的表$O(v)-O(1)$ 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556#include &lt;bits/stdc++.h&gt;using namespace std;const int mod = 998244353;const int maxn = 5000, v = 1000000, radio = 1000;int a[maxn + 10], b[maxn + 10], n, ans;int np[v + 10], prime[v + 10], cnt;int k[v + 10][3];int _gcd[radio + 10][radio + 10];inline int gcd(int a, int b) &#123; int g = 1; for(int tmp, i = 0; i &lt; 3; i++) &#123; if(k[a][i] &gt; radio) &#123; if(b % k[a][i] == 0) tmp = k[a][i]; else tmp = 1; &#125; else tmp = _gcd[k[a][i]][b % k[a][i]]; b /= tmp; g *= tmp; &#125; return g;&#125;int main() &#123; k[1][0] = k[1][1] = k[1][2] = 1; np[1] = 1; for(int i = 2; i &lt;= v; i++) &#123; if(!np[i]) prime[++cnt] = i, k[i][2] = i, k[i][1] = k[i][0] = 1; for(int j = 1; prime[j] * i &lt;= v; j++) &#123; np[i * prime[j]] = 1; int *tmp = k[i * prime[j]]; tmp[0] = k[i][0] * prime[j]; tmp[1] = k[i][1]; tmp[2] = k[i][2]; if(tmp[1] &lt; tmp[0]) swap(tmp[1], tmp[0]); if(tmp[2] &lt; tmp[1]) swap(tmp[2], tmp[1]); if(i % prime[j] == 0) break; &#125; &#125; for(int i = 1; i &lt;= radio; i++) _gcd[i][0] = _gcd[0][i] = i; for(int _max = 1; _max &lt;= radio; _max++) for(int i = 1; i &lt;= _max; i++) _gcd[i][_max] = _gcd[_max][i] = _gcd[_max % i][i]; // for(int i = 1; i &lt;= 10; i++) // for(int j = 1; j &lt;= 10; j++) printf("gcd(%d, %d) = %d\n", i, j, _gcd[i][j]); scanf("%d", &amp;n); for(int i = 1; i &lt;= n; i++) scanf("%d", a + i); for(int i = 1; i &lt;= n; i++) scanf("%d", b + i); for(int i = 1; i &lt;= n; i++) &#123; int now = 1, ans = 0; for(int j = 1; j &lt;= n; j++) &#123; now = 1ll * now * i % mod; ans = (ans + 1ll * gcd(a[i], b[j]) * now) % mod; &#125; printf("%d\n", ans); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[题解 洛谷P1860 新魔法药水]]></title>
     <url>%2F2019%2F08%2F04%2Fsolve-P1860%2F</url>
     <content type="text"><![CDATA[题面题意:现在有$n$种物品,每种物品有一个买入价和售出价现在你手头有$V$块钱你可以买入一些物品然后你可以用一些配料合成另一种物品总合成次数不超过$m$次求最大收益其实就是两个背包$dp$首先用一个背包$dp$算出在用不超过$i$次合成次数下得到$j$物品的最小代价然后再来一次二维代价的背包$dp$即可123456789101112131415161718192021222324252627282930313233343536#include &lt;bits/stdc++.h&gt;using namespace std;int n, m, v, k, cost[250], val[250], op, dp1[250][250], dp[250][1005], tmp[250][50];struct lin &#123; int to, cnt; vector &lt;int&gt; from;&#125; e[250];int main() &#123; scanf("%d%d%d%d", &amp;n, &amp;m, &amp;v, &amp;k); for(int i = 1; i &lt;= n; i++) scanf("%d%d", cost + i, val + i); for(int i = 1; i &lt;= m; i++) &#123; scanf("%d%d", &amp;e[i].to, &amp;e[i].cnt); e[i].from.push_back(0); for(int j = 1, x; j &lt;= e[i].cnt; j++) scanf("%d", &amp;x), e[i].from.push_back(x); &#125; for(int i = 1; i &lt;= n; i++) for(int j = 0; j &lt;= k; j++) dp1[i][j] = cost[i]; for(int cnt = 1; cnt &lt;= k; cnt++) for(int i = 1; i &lt;= m; i++) &#123; for(int j = 1; j &lt;= e[i].cnt; j++) &#123; for(int t = 0; t &lt; cnt; t++) &#123; tmp[j][t] = 2e9; for(int tt = 0; tt &lt;= t; tt++) tmp[j][t] = min(tmp[j][t], tmp[j - 1][t - tt] + dp1[e[i].from[j]][tt]); &#125; &#125; dp1[e[i].to][cnt] = min(dp1[e[i].to][cnt], tmp[e[i].cnt][cnt - 1]); &#125; for(int i = 1; i &lt;= n; i++) for(int use = 0; use &lt;= k; use++) &#123; for(int j = use; j &lt;= k; j++) for(int l = dp1[i][use]; l &lt;= v; l++) dp[j][l] = max(dp[j][l], dp[j - use][l - dp1[i][use]] + val[i] - dp1[i][use]); // cerr &lt;&lt; i &lt;&lt; ' ' &lt;&lt; use &lt;&lt; ' ' &lt;&lt; dp1[i][use] &lt;&lt; endl; &#125; return cout &lt;&lt; dp[k][v] &lt;&lt; endl, 0;&#125;]]></content>
@@ -347,8 +358,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>树链剖分</tag>
         <tag>平衡树</tag>
+        <tag>树链剖分</tag>
       </tags>
   </entry>
   <entry>
